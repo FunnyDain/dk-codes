@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ECMAScript6</title>
+</head>
+<body>
+  <h1> AJAX 기술로 REST API  요청(CORS)</h1>
+  <hr>
+  <button onclick="getAll()">GET(ALL)</button>
+  <button onclick="getOne()">GET(One)</button>
+  <button onclick="postData()">POST</button>
+  <button onclick="deleteData()">DELETE</button>
+  <script>
+
+    //클래스 생성과 객체정의를 같이 했다.
+    const ajaxrequest = {
+      //각 메서드 정의
+      get(url) {
+        //fetch함수를 이용하여 해당 url에 get요청
+        //반환된 Promise를 반환
+        return fetch(url);
+      },
+      getOne(url) {
+        return fetch(url);
+      },
+      //put방식도 동일, method만 변환하면 됌
+      post(url, payload) {    //요청 본문(body)에 json형식 문자열로 변환하여 데이터를 전달해야하므로 payload,
+        return fetch(url, {
+          method: 'POST',
+          //요청 헤더에는 'content-Type': 'application/json'이 포함
+          headers: { 'content-Type': 'application/json' },
+          body: JSON.stringify(payload)   //전달시 json문자열화
+          //반환된 Promise반환
+        });
+      },
+      delete(url) {
+        return fetch(url, { method: 'DELETE' });
+      }
+    }
+
+
+    function getAll() {
+      ajaxrequest.get('http://localhost:8088/boards')
+      .then(response => {
+        if (!response.ok) throw new Error(response.statusText);
+        return response.json();
+      })
+      .then(boards => console.log(boards))
+      .catch(err => console.error(err));
+    }
+
+    function getOne() {
+      ajaxrequest.get('http://localhost:8088/boards/1')
+      .then(response => {
+        if (!response.ok) throw new Error(response.statusText);
+        return response.json();
+      })
+      .then(board => console.log(board))
+      .catch(err => console.error(err));
+    }
+
+    function postData() {
+      ajaxrequest.post('http://localhost:8088/boards', {
+        boardNo: 5,
+        title: '꽃잎 한 장처럼',
+        content: '수도생활 50년, 좋은 삶과 관계를 위한 통찰',
+        writer: '이해인',
+        regDate: '2020-05-25T09:00'
+       }).then(response => {
+         if (!response.ok) throw new Error(response.statusText);
+         return response.text();
+      })
+      .then(msg => console.log(msg))
+       .catch(err => console.error(err));
+    }
+
+    function deleteData() {
+        ajaxrequest.delete('http://localhost:8088/boards/5')
+        .then(response => {
+         if (!response.ok) throw new Error(response.statusText);
+         return response.text();
+      })
+      .then(msg => console.log(msg))
+      .catch(err => console.error(err));
+     }
+  </script>
+</body>
+
+</html>

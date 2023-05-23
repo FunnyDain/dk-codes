@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript6</title>
+</head>
+<body>
+	<script>
+		const calc = {
+			firstNumber: 100,
+			secondNumber:20,
+			print: function() {
+				console.log(this);		//this: calc 객체 자기 자신
+				
+				function add() {
+					console.log(this);		//this: window 객체
+			
+					return this.firstNumber + this.secondNumber;	//winodw에 firstNumber와 secondeNumber는 undefined 정의 되어 있지 x
+				}
+				
+				console.log(this.firstNumber + "+" + this.secondNumber + "=" + add());		
+			}
+		}
+		
+		calc.print();
+	</script>
+</body>
+</html>

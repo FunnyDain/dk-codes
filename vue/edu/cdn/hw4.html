@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.js sample</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+<div id="app">
+	<button v-for="n in 10" @click="showImg(n)">{{n}}</button>
+	<div>
+		<img v-bind:src="result">
+	</div>
+</div>
+<script>
+	const { createApp } = Vue
+	createApp({
+		data() {
+			return {
+				result : "",
+			}
+		},
+		methods: {
+			showImg: function (n) {
+				this.result = "images/" + n + ".jpg";
+			}
+		}
+	}).mount('#app')
+</script>
+</body>
+
+</html>

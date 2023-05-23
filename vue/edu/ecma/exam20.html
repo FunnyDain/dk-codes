@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript6</title>
+</head>
+<body>
+	<script>
+		const name = "Americano";
+		const price = 3000;
+		
+		//key명칭과 value명치가 똑같다면
+		const coffee = {
+				name : name,
+				price : price
+			};
+		
+		console.log(coffee);
+		
+		//이렇게 value로만 구성 가능 = js 객체
+		const coffee2 = {name, price}
+		
+		console.log(coffee2);
+	</script>
+</body>
+</html>

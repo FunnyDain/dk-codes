@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript6</title>
+</head>
+<body>
+	<script>
+		//구조분해할당
+		let coffee = {
+			name : "Americano",
+			price : 3000
+		};
+		
+		let {name: coffeeName, price: coffeePrice} = coffee;
+		
+		console.log(coffeeName);
+		
+		console.log(coffeePrice);
+	</script>
+</body>
+</html>

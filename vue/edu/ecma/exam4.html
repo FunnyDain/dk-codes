@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript6</title>
+</head>
+<body>
+	<script>
+		const calc = {
+			firstNumber: 100,
+			secondNumber:20,
+			print: function() {
+				const add = () => {
+					console.log(this);		//arrow function에서는 일반 함수와 달리 this가 window가 아닌 자기 자신을 가르킴
+					return this.firstNumber + this.secondNumber;
+				}
+				
+				console.log(this.firstNumber + "+" + this.secondNumber + "=" + add());
+			}
+		}
+		
+		calc.print();
+	</script>
+</body>
+</html>
