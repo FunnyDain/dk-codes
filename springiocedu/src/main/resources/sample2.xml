@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--scope는 기본값 singleton(미리 객체 생성), prototype으로 변경하면 객체 호출할때마다 생성(호출될 때 생성)-->
+<bean id="foo0" class="sample2.Foo" scope="prototype"  /> <!-- prototyp/sigleton(default) scope="prototype" -->
+<bean id="foo1" class="sample2.Foo">
+	<constructor-arg value="XYZ"/>	
+</bean>
+<bean id="foo2" class="sample2.Foo">
+	<constructor-arg  value="ABC"/>		<!--1번째 index-->
+	<constructor-arg  value="100"/>		<!--2번째 index-->
+</bean>
+<bean id="foo3" class="sample2.Foo">
+	<constructor-arg index="1"  type="int"  value="50"/>
+	<constructor-arg index="0"  type="java.lang.String" value="xyz"/>		<!--java.lang.String : 패키지명과 줘야함-->
+	<constructor-arg index="2"  type="boolean" value="true"/>
+</bean>
+<bean id="foo4" class="sample2.Foo">
+	<constructor-arg ref="bar" />
+</bean>
+
+<bean id="bar"  class="sample2.Bar" />
+</beans>
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="greeting1" class="exam1.MorningGreetingImpl"/>
+	<bean id="greeting2" class="exam1.AfternoonGreetingImpl"/>
+	<bean id="greeting3" class="exam1.EveningGreetingImpl"/>
+	<bean id="greeting4" class="exam1.NightGreetingImpl"/>
+
+	<bean id="time" class="java.time.LocalDateTime" factory-method="now">
+	</bean>
+
+</beans>

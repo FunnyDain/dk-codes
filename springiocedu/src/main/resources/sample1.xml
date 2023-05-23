@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--선언적인 프로그래밍 : 사전에 객체(bean) 설정을 해주는 것이다.-->
+	<!--장점 : 예를 들어 property수정시, 설정파일만 수정해 주면됨-->
+	<!--객체 생성-->
+	<bean id="messageBean1" class="sample1.MessageBeanImpl" >
+		<!--생성자로 argument로 strawberry-->
+		<constructor-arg>
+			<value>strawberry</value>
+		</constructor-arg>
+		<!--setter-->
+		<property name="cost">
+			<value>3000</value>
+		</property>
+	</bean>	
+	
+	<bean id="messageBean2" class="sample1.MessageBeanImpl" >
+		<constructor-arg>
+			<value>peach</value>
+		</constructor-arg>	
+		<property name="cost"  value="2000" />	
+	</bean>	
+</beans>
